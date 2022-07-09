@@ -13,7 +13,7 @@ public class Java_LR_Exercicio_02
 				
 		for (num=1; num<6; num++)
 		{
-			System.out.println("Digite os 10 números:");
+			System.out.println("Digite os 10 números: ");
 			x = ler.nextInt();
 			resto = x % 2;
 			
