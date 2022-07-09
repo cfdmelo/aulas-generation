@@ -2,23 +2,21 @@ package Familia55;
 
 import java.util.Scanner;
 
-public class Aula {
-
+public class Java_LD_Exercicio_01 
+{
 	public static void main(String[] args)
 	{
+// 		1- Faça um programa que receba três inteiros e diga qual deles é o maior. //
 		
-		Scanner leia = new Scanner(System.in);
+		Scanner ler = new Scanner(System.in);
+		int a, b, c;
 		
-// 1-	Faça um programa que receba três inteiros e diga qual deles é o maior. //
-		
-		int a, b, c, maiorvalor=0;
-		
-		System.out.println("Digite o primeiro valor inteiro: ");
-		a = leia.nextInt();
-		System.out.println("Digite o segundo valor inteiro: ");
-		b = leia.nextInt();
-		System.out.println("Digite o terceiro valor inteiro: ");
-		c = leia.nextInt();
+		System.out.println("[1] Digite o primeiro valor inteiro:");
+		a = ler.nextInt();
+		System.out.println("[2] Digite o segundo valor inteiro:");
+		b = ler.nextInt();
+		System.out.println("[3] Digite o terceiro valor inteiro:");
+		c = ler.nextInt();
 		
 		if (a > b && a > c)
 		{
@@ -33,5 +31,4 @@ public class Aula {
 			System.out.println("Maior valor é:" + c);
 		}
 	}
-
 }
