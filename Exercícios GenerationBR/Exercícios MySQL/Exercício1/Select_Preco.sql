@@ -1,0 +1,1 @@
+SELECT * FROM tb_ecommerce where preco_produto < 500

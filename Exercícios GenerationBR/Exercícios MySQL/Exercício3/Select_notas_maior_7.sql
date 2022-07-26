@@ -1,0 +1,1 @@
+SELECT * FROM tb_dadosescola WHERE nota_aluno > 7.0
