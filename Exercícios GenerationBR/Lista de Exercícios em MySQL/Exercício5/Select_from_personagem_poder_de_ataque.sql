@@ -1,1 +1,0 @@
-SELECT * FROM tb_personagem WHERE poder_de_ataque >= 1000.00 AND poder_de_ataque <= 2000.00
