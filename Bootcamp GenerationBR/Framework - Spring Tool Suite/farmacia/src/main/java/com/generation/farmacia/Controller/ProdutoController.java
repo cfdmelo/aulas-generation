@@ -1,6 +1,8 @@
-package com.generation.farmacia.controller;
+package com.generation.farmacia.Controller;
 
 import java.util.List;
+
+import javax.persistence.ManyToOne;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,12 +17,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.generation.farmacia.Model.ProdutoModel;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.generation.farmacia.Modell.CategoriaModel;
+import com.generation.farmacia.Modell.ProdutoModel;
 import com.generation.farmacia.Repository.ProdutoRepository;
 
 @RestController
 @RequestMapping("/produto")
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 
 public class ProdutoController {
 
@@ -40,7 +44,7 @@ public class ProdutoController {
 
 	@GetMapping("/nome/{nome}")
 	public ResponseEntity<List<ProdutoModel>> GetByName(@PathVariable String nome) {
-		return ResponseEntity.ok(produtoRepository.findAllBynomeMedicamentoContainingIgnoreCase(nome));
+		return ResponseEntity.ok(produtoRepository.findAllByNomeMedicamentoContainingIgnoreCase(nome));
 	}
 
 	@PostMapping
@@ -58,4 +62,5 @@ public class ProdutoController {
 	public void delete (@PathVariable Long id) {
 		produtoRepository.deleteById(id);
 	}
+	
 }

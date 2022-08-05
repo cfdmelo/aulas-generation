@@ -1,4 +1,4 @@
-package com.generation.farmacia.Model;
+package com.generation.farmacia.Modell;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -25,12 +26,10 @@ public class ProdutoModel {
 	@NotBlank(message = "É necessário conter o nome do produto")
 	@Size(min = 5, max = 50)
 	private String nomeMedicamento;
-
-	private double valorMedicamento;
 	
-	@OneToMany(mappedBy="categoria", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("categoria")
-	private List<ProdutoModel> produto;
+	@ManyToOne
+	@JsonIgnoreProperties("produto")
+	private CategoriaModel categoria;
 
 	public Long getId() {
 		return id;
@@ -48,12 +47,12 @@ public class ProdutoModel {
 		this.nomeMedicamento = nomeMedicamento;
 	}
 
-	public double getValorMedicamento() {
-		return valorMedicamento;
+	public CategoriaModel getCategoria() {
+		return categoria;
 	}
 
-	public void setValorMedicamento(double valorMedicamento) {
-		this.valorMedicamento = valorMedicamento;
+	public void setCategoria(CategoriaModel categoria) {
+		this.categoria = categoria;
 	}
 
 }
