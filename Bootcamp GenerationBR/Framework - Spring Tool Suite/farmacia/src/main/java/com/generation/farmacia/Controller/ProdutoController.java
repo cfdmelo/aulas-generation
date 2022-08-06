@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.generation.farmacia.Modell.CategoriaModel;
-import com.generation.farmacia.Modell.ProdutoModel;
+import com.generation.farmacia.Model.CategoriaModel;
+import com.generation.farmacia.Model.ProdutoModel;
 import com.generation.farmacia.Repository.ProdutoRepository;
 
 @RestController

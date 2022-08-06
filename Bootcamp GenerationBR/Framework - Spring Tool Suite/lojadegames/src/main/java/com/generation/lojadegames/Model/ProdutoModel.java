@@ -1,4 +1,4 @@
-package com.generation.lojadegames.Modell;
+package com.generation.lojadegames.Model;
 
 import java.math.BigDecimal;
 
@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table (name = "tb_produto")
-public class ProdutoModell {	
+public class ProdutoModel {	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -30,7 +30,7 @@ public class ProdutoModell {
 	
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
-	private CategoriaModell categoria;
+	private CategoriaModel categoria;
 
 	public Long getId() {
 		return id;

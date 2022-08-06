@@ -1,4 +1,4 @@
-package com.generation.farmacia.Modell;
+package com.generation.farmacia.Model;
 
 import java.util.List;
 

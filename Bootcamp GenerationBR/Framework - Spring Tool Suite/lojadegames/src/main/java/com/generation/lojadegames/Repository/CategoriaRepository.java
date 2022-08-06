@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.generation.lojadegames.Modell.CategoriaModell;
+import com.generation.lojadegames.Model.CategoriaModel;
 
-public interface CategoriaRepository extends JpaRepository<CategoriaModell, Long> {
+public interface CategoriaRepository extends JpaRepository<CategoriaModel, Long> {
 	
-	public List <CategoriaModell> findAllByTipoDispositivoContainingIgnoreCase (String tipoDispositivo);
+	public List <CategoriaModel> findAllByTipoDispositivoContainingIgnoreCase (String tipoDispositivo);
 }

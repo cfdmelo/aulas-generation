@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.generation.lojadegames.Modell.CategoriaModell;
+import com.generation.lojadegames.Model.CategoriaModel;
 import com.generation.lojadegames.Repository.CategoriaRepository;
 
 @RestController
@@ -27,28 +27,28 @@ public class CategoriaController {
 	private CategoriaRepository categoriaRepository;
 
 	@GetMapping
-	public ResponseEntity<List<CategoriaModell>> GetAll() {
+	public ResponseEntity<List<CategoriaModel>> GetAll() {
 		return ResponseEntity.ok(categoriaRepository.findAll());
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<CategoriaModell> GetById(@PathVariable Long Id) {
+	public ResponseEntity<CategoriaModel> GetById(@PathVariable Long Id) {
 		return categoriaRepository.findById(null).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
 
 	@GetMapping("/tipo/{tipo}")
-	public ResponseEntity<List<CategoriaModell>> GetByName(@PathVariable String tipo) {
+	public ResponseEntity<List<CategoriaModel>> GetByName(@PathVariable String tipo) {
 		return ResponseEntity.ok(categoriaRepository.findAllByTipoDispositivoContainingIgnoreCase(tipo));
 	}
 
 	@PostMapping
-	public ResponseEntity<CategoriaModell> post(@RequestBody CategoriaModell categoria) {
+	public ResponseEntity<CategoriaModel> post(@RequestBody CategoriaModel categoria) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(categoriaRepository.save(categoria));
 	}
 
 	@PutMapping
-	public ResponseEntity<CategoriaModell> put(@RequestBody CategoriaModell categoria) {
+	public ResponseEntity<CategoriaModel> put(@RequestBody CategoriaModel categoria) {
 		return ResponseEntity.status(HttpStatus.OK).body(categoriaRepository.save(categoria));
 	}
 
@@ -56,6 +56,4 @@ public class CategoriaController {
 	public void delete(@PathVariable Long id) {
 		categoriaRepository.deleteById(id);
 	}
-	
-	
 }

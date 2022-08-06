@@ -1,4 +1,4 @@
-package com.generation.lojadegames.Modell;
+package com.generation.lojadegames.Model;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table (name = "tb_categoria")
-public class CategoriaModell {
+public class CategoriaModel {
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -28,7 +28,7 @@ public class CategoriaModell {
 	
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("categoria")
-	private List<ProdutoModell> produto;
+	private List<ProdutoModel> produto;
 
 	public Long getId() {
 		return id;

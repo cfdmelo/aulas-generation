@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.generation.lojadegames.Modell.CategoriaModell;
-import com.generation.lojadegames.Modell.ProdutoModell;
+import com.generation.lojadegames.Model.CategoriaModel;
+import com.generation.lojadegames.Model.ProdutoModel;
 import com.generation.lojadegames.Repository.CategoriaRepository;
 import com.generation.lojadegames.Repository.ProdutoRepository;
 
@@ -28,32 +28,32 @@ public class ProdutoContoller {
 	private ProdutoRepository produtoRepository;
 	
 	@GetMapping
-	public ResponseEntity <List<ProdutoModell>> GetAll(){
+	public ResponseEntity <List<ProdutoModel>> GetAll(){
 		return ResponseEntity.ok(produtoRepository.findAll());
 	}
 	
 	@GetMapping ("/{id}")
-	public ResponseEntity <ProdutoModell> GetById(@PathVariable Long Id){
+	public ResponseEntity <ProdutoModel> GetById(@PathVariable Long Id){
 		return produtoRepository.findById(null).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 	
 	@GetMapping ("/tipo/{tipo}")
-	public ResponseEntity<List<ProdutoModell>> GetByName (@PathVariable String nome){
+	public ResponseEntity<List<ProdutoModel>> GetByName (@PathVariable String nome){
 		return ResponseEntity.ok(produtoRepository.findAllByNomeContainingIgnoreCase(nome));
 	}
 	
 	@GetMapping("/preco_incial/{inicio}/preco_final/{fim}")
-	public ResponseEntity<List<ProdutoModell>> getByPrecoEntre(@PathVariable BigDecimal inicio, @PathVariable BigDecimal fim){
+	public ResponseEntity<List<ProdutoModel>> getByPrecoEntre(@PathVariable BigDecimal inicio, @PathVariable BigDecimal fim){
 		return ResponseEntity.ok(produtoRepository.findByValorBetween(inicio, fim));
 	}
 	
 	@PostMapping 
-	public ResponseEntity<ProdutoModell> post (@RequestBody ProdutoModell categoria){
+	public ResponseEntity<ProdutoModel> post (@RequestBody ProdutoModel categoria){
 		return ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(categoria));
 	}
 	
 	@PutMapping
-	public ResponseEntity <ProdutoModell> put (@RequestBody ProdutoModell categoria){
+	public ResponseEntity <ProdutoModel> put (@RequestBody ProdutoModel categoria){
 		return ResponseEntity.status(HttpStatus.OK).body(produtoRepository.save(categoria));
 	}
 	@DeleteMapping ("/{id}")
