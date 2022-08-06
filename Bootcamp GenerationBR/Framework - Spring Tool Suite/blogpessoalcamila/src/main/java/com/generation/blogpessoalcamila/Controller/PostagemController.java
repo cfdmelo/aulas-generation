@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.generation.blogpessoalcamila.model.PostagemModel;
-import com.generation.blogpessoalcamila.repository.PostagemRepository;
+import com.generation.blogpessoalcamila.Modell.PostagemModel;
+import com.generation.blogpessoalcamila.Repository.PostagemRepository;
 
 @RestController
 @RequestMapping("/postagens")

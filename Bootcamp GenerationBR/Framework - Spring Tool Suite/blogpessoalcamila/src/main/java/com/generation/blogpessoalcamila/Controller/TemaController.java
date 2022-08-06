@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.generation.blogpessoalcamila.model.TemaModel;
-import com.generation.blogpessoalcamila.repository.TemaRepository;
+import com.generation.blogpessoalcamila.Modell.TemaModel;
+import com.generation.blogpessoalcamila.Repository.TemaRepository;
 
 @RestController
 @CrossOrigin(origins = " * ", allowedHeaders = "*")
