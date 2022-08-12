@@ -1,18 +1,16 @@
-package com.generation.blogpessoalcamila.Modell;
+package com.generation.blogpessoalcamila.Model;
 
-import java.util.Date;
-
+import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -23,20 +21,24 @@ public class PostagemModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank
-	@Size(min = 5, max = 100)
-	private String titulo;
+    @NotBlank (message = "É obrigatório informar o título!") 
+    @Size(min = 5, max = 100, message = "O título deve conter no mínimo 5 e no máximo 100 caracteres")
+    private String titulo;
 	
-	@NotNull
-	@Size(min = 10, max = 100)
-	private String texto;
+    @NotBlank(message = "É obrigatório informar o texto!")
+    @Size(min = 10, max = 1000, message = "O texto deve conter no mínimo 10 e no máximo 1000 caracteres")
+    private String texto;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date date = new java.sql.Date(System.currentTimeMillis());
+	@UpdateTimestamp
+	private LocalDateTime data;
 	
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
 	private TemaModel tema;
+	
+    @ManyToOne
+    @JsonIgnoreProperties("postagem")
+    private UsuarioModel usuario;
 
 	public TemaModel getTema() {
 		return tema;
@@ -70,13 +72,20 @@ public class PostagemModel {
 		this.texto = texto;
 	}
 
-	public Date getDate() {
-		return date;
+	public LocalDateTime getData() {
+		return data;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setData(LocalDateTime data) {
+		this.data = data;
 	}
-	
+
+	public UsuarioModel getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(UsuarioModel usuario) {
+		this.usuario = usuario;
+	}	
 	
 }

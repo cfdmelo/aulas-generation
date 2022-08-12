@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.generation.blogpessoalcamila.Modell.PostagemModel;
+import com.generation.blogpessoalcamila.Model.PostagemModel;
 import com.generation.blogpessoalcamila.Repository.PostagemRepository;
 
 @RestController
@@ -50,9 +50,10 @@ public class PostagemController {
 	public ResponseEntity<PostagemModel> pust(@RequestBody PostagemModel postagemModel) {
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(postagemModel));
 	}
+
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id) {
 		repository.deleteById(id);
 	}
-	
+
 }

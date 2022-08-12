@@ -1,4 +1,4 @@
-package com.generation.blogpessoalcamila.Modell;
+package com.generation.blogpessoalcamila.Model;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class TemaModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@NotNull
+	@NotNull (message = "É obrigatório informar a descrição!")
 	private String descricao;
 	
 	@OneToMany (mappedBy = "tema", cascade = CascadeType.ALL)
