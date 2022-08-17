@@ -16,22 +16,25 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 @Entity
-@Table (name = "tb_usuarios")
+@Table(name = "tb_usuarios")
 public class UsuarioModel {
-	
+
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@NotNull(message = "É obrigatório informar o nome!")
+
+	@NotNull
 	private String nome;
 
-	@NotNull(message = "É obrigatório informar o usuário!")
+	@Schema (example = "email@email.com.br")
+	@NotNull
 	@Email(message = "O email deve ser um email válido")
 	private String usuario;
 
-	@NotBlank(message = "É obrigatório informar a senha")
+	@NotBlank
 	@Size(min = 8, message = "A Senha deve ter no mínimo 8 caracteres")
 	private String senha;
 
@@ -41,7 +44,18 @@ public class UsuarioModel {
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
 	private List<PostagemModel> postagem;
+	
+	public UsuarioModel(Long id, String nome, String usuario, String senha, String foto) {
+		this.id = id;
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+		this.foto = foto;
+	}
+	
+	public UsuarioModel() { }
 
+	
 	public Long getId() {
 		return id;
 	}
@@ -88,5 +102,8 @@ public class UsuarioModel {
 
 	public void setPostagem(List<PostagemModel> postagem) {
 		this.postagem = postagem;
+		
+		
 	}
+	
 }

@@ -14,23 +14,24 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Entity
-@Table (name = "tb_postagens")
+@Entity 
+@Table (name = "tb_postagens") 
 public class PostagemModel {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Long id;
 	
-    @NotBlank (message = "É obrigatório informar o título!") 
-    @Size(min = 5, max = 100, message = "O título deve conter no mínimo 5 e no máximo 100 caracteres")
+    @NotBlank (message = "O título não pode ser nulo ou estar em branco")
+    @Size(min = 5, max = 100, message = "O título deve conter no mínimo 5 e no máximo 100 caracteres") 
     private String titulo;
 	
-    @NotBlank(message = "É obrigatório informar o texto!")
-    @Size(min = 10, max = 1000, message = "O texto deve conter no mínimo 10 e no máximo 1000 caracteres")
+    @NotBlank
+    @Size(min = 10, max = 1000, message = "O título deve conter no mínimo 5 e no máximo 1000 caracteres")
     private String texto;
 	
 	@UpdateTimestamp
-	private LocalDateTime data;
+	private LocalDateTime data; 
 	
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
@@ -87,5 +88,6 @@ public class PostagemModel {
 	public void setUsuario(UsuarioModel usuario) {
 		this.usuario = usuario;
 	}	
+	
 	
 }
